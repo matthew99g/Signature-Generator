@@ -133,23 +133,34 @@ void decToHexa(int n, char *szBuffer)
 void SignatureDefaultFormatString(const BYTE *szSignatureData, unsigned int iMemoryLength,
 	char *szSignature) {
 	char szBuffer[5];
+	int y = 0;
 
 	for (int index = 0; index < iMemoryLength; index++) {
 		char temp[3];
-		decToHexa((int)szSignatureData[index], temp);
+		decToHexa((int)szSignatureData[index + y], temp);
 
 		szBuffer[0] = '\\';
 		szBuffer[1] = 'x';
 		szBuffer[2] = temp[1];
 		szBuffer[3] = temp[0];
-		
+
 		int x = 0;
 		for (int i = 4 * index;
 			i < 4 * index + 4; i++) {
 			szSignature[i] = szBuffer[x];
 			x++;
 		}
+
+		if (szBuffer[2] == 'E' && szBuffer[3] == '8') {
+			index++;
+
+			for (int i = 4 * index;
+				i < 4 * index + 4; i++) {
+				szSignature[i] = '?';
+			}
+			y += 3;
+		}
 	}
-	
-	szSignature[4 * iMemoryLength] = 0;
+
+	szSignature[4 * iMemoryLength - (y * 4)] = 0;
 }

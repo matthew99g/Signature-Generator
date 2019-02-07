@@ -1,3 +1,6 @@
 ﻿  Signature.cpp
-c:\users\okole\source\repos\signature generator\signature generator\signature.cpp(137): warning C4018: '<': signed/unsigned mismatch
+c:\users\okole\source\repos\signature generator\signature generator\signature.cpp(138): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+c:\users\okole\source\repos\signature generator\signature generator\main.cpp(55): warning C4477: 'printf' : format string '%X' requires an argument of type 'unsigned int', but variadic argument 1 has type 'LPVOID'
+  Generating Code...
   Signature Generator.vcxproj -> C:\Users\okole\source\repos\Signature Generator\Debug\Signature Generator.exe
